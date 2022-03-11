@@ -22,11 +22,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/tvTimestamp"
         app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="sophiecheenn" />
+        app:layout_constrainedWidth="true"
+        tools:text="sdlnsssssssnn" />
 
     <TextView
         android:id="@+id/tvTweetBody"
@@ -39,4 +44,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tvUsername"
         app:layout_constrainedWidth="true"
         tools:text="dlknaldbjkdandldjnnnnnasklalkkkkkkskskskdddddddddnndskladddddddddakdjslasdalkdalksjaskdjadjdsaladlkasldankaldlkd" />
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
