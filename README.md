@@ -1,6 +1,6 @@
 # Project 2 - *Twitter Clone*
 
-**TwitterClone** is an android app that allows a user to view his Twitter timeline. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
+**TwitterClone** is an android app that allows users to view their Twitter timeline and post new tweets. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
 Time spent: **4** hours spent in total
 
