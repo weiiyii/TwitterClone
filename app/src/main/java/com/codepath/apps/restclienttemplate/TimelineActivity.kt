@@ -1,8 +1,15 @@
 package com.codepath.apps.restclienttemplate
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -45,6 +52,37 @@ class TimelineActivity : AppCompatActivity() {
         rvTweets.adapter = adapter
 
         populateHomeTimeline()
+    }
+
+    // Tell which menu resource to use on menu created
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    private val actLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult())
+    { it ->
+        if(it.resultCode == Activity.RESULT_OK){
+
+            val tweet = it.data?.getParcelableExtra<Tweet>("tweet") as Tweet
+
+            // Update timeline
+            tweets.add(0, tweet)
+            adapter.notifyItemInserted(0)
+            rvTweets.smoothScrollToPosition(0)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.compose){
+
+            // Navigate to compose screen
+            var intent = Intent(this, ComposeActivity::class.java)
+            actLauncher.launch(intent)
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun populateHomeTimeline() {
